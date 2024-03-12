@@ -2,10 +2,16 @@
 
 use App\Http\Livewire\User\UserList;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Block\BlockList;
+use App\Http\Livewire\Gender\GenderList;
+
+use App\Http\Livewire\Teacher\TeacherList;
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\Customer\CustomerList;
 use App\Http\Controllers\DashboardController;
 use App\Http\Livewire\Authentication\RoleList;
 use App\Http\Livewire\Authentication\PermissionList;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +40,15 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('user', UserList::class);
-    
+
     Route::get('role', RoleList::class);
     Route::get('permission', PermissionList::class);
+
+    Route::get('genders', GenderList::class);
+    Route::get('customers', CustomerList::class);
+
+    Route::get('blocks', BlockList::class);
+    Route::get('teachers', TeacherList::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
